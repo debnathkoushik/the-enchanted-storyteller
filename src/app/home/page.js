@@ -81,16 +81,20 @@ export default function ArticleComment({ initialState }) {
                 <FormControl mb={3}>
                   <FormLabel>Characters</FormLabel>
                   <Select name="characters" id="characters" size="sm" mb={1}>
-                    {characters.map((c) => (
-                      <option value={c}>{capitalizeFirstLetter(c)}</option>
+                    {characters.map((c, i) => (
+                      <option key={i} value={c}>
+                        {capitalizeFirstLetter(c)}
+                      </option>
                     ))}
                   </Select>
                 </FormControl>
                 <FormControl mb={3}>
                   <FormLabel>Setting</FormLabel>
                   <Select name="setting" id="setting" size="sm" mb={1}>
-                    {settings.map((c) => (
-                      <option value={c}>{capitalizeFirstLetter(c)}</option>
+                    {settings.map((c, i) => (
+                      <option key={i} value={c}>
+                        {capitalizeFirstLetter(c)}
+                      </option>
                     ))}
                   </Select>
                 </FormControl>
