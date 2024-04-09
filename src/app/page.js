@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { Great_Vibes } from "next/font/google";
 
-import { claudeApiHandler } from "@/app/actions/apiHandler";
+import { claudeApiHandler, resetServerState } from "@/app/actions/apiHandler";
 import { GenStoryButton } from "@/app/home/components/GenStoryButton";
 import { capitalizeFirstLetter } from "@/app/home/utils";
 import UserPrompt from "@/app/home/components/UserPrompt";
@@ -42,6 +42,17 @@ export default function MainUi() {
 
   // for handling changes in Input field for story continuation
   const handleUserPrompt = (e) => setUserPrompt(e.target.value);
+
+  function reset() {
+    setInput("");
+    setRenderStory(false);
+    setStory([]);
+    setUserPrompt("");
+    setUserName(null);
+    setPromptContainer([]);
+
+    resetServerState();
+  }
 
   // for initial story generation
   async function onSubmitForm(formData) {
@@ -104,6 +115,8 @@ export default function MainUi() {
               fontSize="4xl"
               className={greatVibesFont.className}
               style={{ textShadow: "-2px -2px 4px #E53E3E" }}
+              onClick={reset}
+              cursor={"pointer"}
             >
               Enchanted Storyteller
             </Text>
@@ -122,6 +135,7 @@ export default function MainUi() {
                     name="userName"
                     value={input}
                     placeholder="Frodo Baggins"
+                    focusBorderColor={"red.200"}
                     size="sm"
                     onChange={handleInputChange}
                   />
@@ -131,7 +145,13 @@ export default function MainUi() {
                 </FormControl>
                 <FormControl mb={3}>
                   <FormLabel>Characters</FormLabel>
-                  <Select name="characters" id="characters" size="sm" mb={1}>
+                  <Select
+                    name="characters"
+                    id="characters"
+                    size="sm"
+                    mb={1}
+                    focusBorderColor={"red.200"}
+                  >
                     {characters.map((c, i) => (
                       <option key={i} value={c}>
                         {capitalizeFirstLetter(c)}
@@ -141,7 +161,13 @@ export default function MainUi() {
                 </FormControl>
                 <FormControl mb={3}>
                   <FormLabel>Period</FormLabel>
-                  <Select name="setting" id="setting" size="sm" mb={1}>
+                  <Select
+                    name="setting"
+                    id="setting"
+                    size="sm"
+                    mb={1}
+                    focusBorderColor={"red.200"}
+                  >
                     {settings.map((c, i) => (
                       <option key={i} value={c}>
                         {capitalizeFirstLetter(c)}
@@ -149,7 +175,7 @@ export default function MainUi() {
                     ))}
                   </Select>
                 </FormControl>
-                <FormControl>
+                <FormControl textAlign={"right"}>
                   <GenStoryButton text={"Generate Story"} />
                 </FormControl>
               </form>
@@ -169,6 +195,7 @@ export default function MainUi() {
             w="100%"
             borderWidth="2px"
             borderRadius="lg"
+            borderColor={"red.100"}
           >
             <Flex
               id="story"

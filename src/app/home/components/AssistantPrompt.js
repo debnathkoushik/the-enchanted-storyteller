@@ -7,7 +7,7 @@ export default function AssistantPrompt({ story }) {
   return (
     <Flex
       p={2}
-      bg={"blue.100"}
+      bg={"red.100"}
       color={"gray.700"}
       borderRadius="lg"
       w="fit-content"

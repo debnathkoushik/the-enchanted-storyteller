@@ -9,7 +9,7 @@ export function GenStoryButton({ text }) {
 
   return (
     <Button
-      colorScheme="blue"
+      colorScheme="red"
       type="submit"
       aria-disabled={pending}
       isLoading={pending}

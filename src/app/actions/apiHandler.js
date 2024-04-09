@@ -45,3 +45,7 @@ export async function claudeApiHandler(params) {
   console.log({ messages });
   return text;
 }
+
+export async function resetServerState() {
+  messages.length = 0;
+}

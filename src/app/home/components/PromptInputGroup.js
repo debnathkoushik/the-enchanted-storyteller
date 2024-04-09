@@ -21,7 +21,7 @@ export default function PromptInputGroup({
     <Box p={1}>
       <form key="storyForm" action={onSubmitUserPrompt}>
         <FormControl isRequired>
-          <InputGroup size="md">
+          <InputGroup size="md" borderColor={"red.100"}>
             <Input
               pr="4.5rem"
               type="text"
@@ -29,6 +29,7 @@ export default function PromptInputGroup({
               name="userPrompt"
               id="userPrompt"
               value={userPrompt}
+              focusBorderColor={"red.200"}
             />
             <InputRightElement width="6rem">
               <ContinueStoryBtn />
@@ -45,7 +46,8 @@ function ContinueStoryBtn() {
 
   return (
     <Button
-      colorScheme="blue"
+      colorScheme="red"
+      variant="outline"
       type="submit"
       aria-disabled={pending}
       isLoading={pending}
