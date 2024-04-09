@@ -182,7 +182,6 @@ export default function MainUi() {
               </Card>
               <PromptInputGroup
                 handleUserPrompt={handleUserPrompt}
-                text="Continue"
                 onSubmitUserPrompt={onSubmitUserPrompt}
                 userPrompt={userPrompt}
               />

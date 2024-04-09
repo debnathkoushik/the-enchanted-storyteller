@@ -17,8 +17,6 @@ export default function PromptInputGroup({
   onSubmitUserPrompt,
   userPrompt = "",
 }) {
-  const { pending } = useFormStatus();
-
   return (
     <Box p={1}>
       <form key="storyForm" action={onSubmitUserPrompt}>
@@ -33,20 +31,28 @@ export default function PromptInputGroup({
               value={userPrompt}
             />
             <InputRightElement width="6rem">
-              <Button
-                colorScheme="blue"
-                type="submit"
-                aria-disabled={pending}
-                isLoading={pending}
-                align="right"
-                size={"sm"}
-              >
-                {text}
-              </Button>
+              <ContinueStoryBtn />
             </InputRightElement>
           </InputGroup>
         </FormControl>
       </form>
     </Box>
+  );
+}
+
+function ContinueStoryBtn() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button
+      colorScheme="blue"
+      type="submit"
+      aria-disabled={pending}
+      isLoading={pending}
+      align="right"
+      size={"sm"}
+    >
+      Continue
+    </Button>
   );
 }
