@@ -32,7 +32,7 @@ export async function claudeApiHandler(params) {
 
   const msg = await anthropic.messages.create({
     model: "claude-3-opus-20240229",
-    max_tokens: 1024,
+    max_tokens: 30,
     system:
       "You are an AI assistant with a passion for creative writing and storytelling. Your task is to to create engaging stories, offering imaginative plot twists and dynamic character development with magical realism.",
     messages,
