@@ -14,7 +14,9 @@ import {
   FormHelperText,
   Flex,
   Card,
+  Text,
 } from "@chakra-ui/react";
+import { Great_Vibes } from "next/font/google";
 
 import { claudeApiHandler } from "@/app/actions/apiHandler";
 import { GenStoryButton } from "@/app/home/components/GenStoryButton";
@@ -23,8 +25,10 @@ import UserPrompt from "@/app/home/components/UserPrompt";
 import AssistantPrompt from "@/app/home/components/AssistantPrompt";
 import PromptInputGroup from "@/app/home/components/PromptInputGroup";
 
+const greatVibesFont = Great_Vibes({ subsets: ["latin"], weight: "400" });
+
 const characters = ["dragon", "spells", "wizard"];
-const settings = ["ancient", "medieval", "retro"];
+const settings = ["mythological", "medieval", "futuristic"];
 
 export default function MainUi() {
   const [input, setInput] = useState("");
@@ -94,30 +98,35 @@ export default function MainUi() {
         color="blackAlpha.700"
         fontWeight="bold"
       >
-        <GridItem pl="2" bg="orange.300" area={"header"}>
-          <Center mt={3} mb={1}>
-            Enchanted Story
+        <GridItem pl="2" bg="red.600" area={"header"}>
+          <Center>
+            <Text
+              fontSize="4xl"
+              className={greatVibesFont.className}
+              style={{ textShadow: "-2px -2px 4px #E53E3E" }}
+            >
+              Enchanted Storyteller
+            </Text>
           </Center>
         </GridItem>
       </Grid>
       {!renderStory ? (
         <GridItem pl="2" area={"main"}>
           <Container maxW="lg">
-            <Box borderWidth="5px" borderRadius="lg" maxW="lg" p={1}>
+            <Box borderWidth="2px" mt="2" borderRadius="lg" maxW="lg" p={1}>
               <form key="inputForm" action={onSubmitForm}>
                 <FormControl mb={3} isRequired>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Character Name</FormLabel>
                   <Input
                     id="userName"
                     name="userName"
                     value={input}
-                    placeholder="Example: Rahul"
+                    placeholder="Frodo Baggins"
                     size="sm"
-                    mb={1}
                     onChange={handleInputChange}
                   />
                   <FormHelperText>
-                    Enter a username and get started!
+                    Enter a name and start your adventure!!
                   </FormHelperText>
                 </FormControl>
                 <FormControl mb={3}>
@@ -131,7 +140,7 @@ export default function MainUi() {
                   </Select>
                 </FormControl>
                 <FormControl mb={3}>
-                  <FormLabel>Setting</FormLabel>
+                  <FormLabel>Period</FormLabel>
                   <Select name="setting" id="setting" size="sm" mb={1}>
                     {settings.map((c, i) => (
                       <option key={i} value={c}>
